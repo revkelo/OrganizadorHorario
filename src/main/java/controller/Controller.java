@@ -3,14 +3,17 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import view.View;
+import view.FachadaView;
+import view.Ventana;
 
 public class Controller implements ActionListener {
-	private View vp;
+
+	private FachadaView vp;
 
 	public Controller() {
-		vp = new View();
-		vp.setVisible(true);
+		vp = new FachadaView();
+
+		vp.getView().setVisible(true);
 	}
 
 	@Override

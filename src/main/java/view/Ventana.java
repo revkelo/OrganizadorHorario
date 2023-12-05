@@ -10,8 +10,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class View extends JFrame {
-	public View() {
+public class Ventana extends JFrame {
+	public Ventana() {
 		setTitle("Horario");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 720);
