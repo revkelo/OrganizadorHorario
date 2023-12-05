@@ -1,6 +1,9 @@
-package model;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+
+import model.MateriaDTO;
+
 import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -9,7 +12,7 @@ import java.util.Scanner;
 
 public class HorarioColegio extends JFrame {
 
-	private ArrayList<Materia> listaMaterias = new ArrayList<>();
+	private ArrayList<MateriaDTO> listaMaterias = new ArrayList<>();
 	Scanner scanner = new Scanner(System.in);
 
 	public String[][] materia() {
@@ -42,7 +45,7 @@ public class HorarioColegio extends JFrame {
 				int diaSemana = scanner.nextInt();
 
 				// Crear objeto Materia y agregarlo a la lista
-				Materia materia = new Materia(nombreMateria, profesor, horaInicio, horaFin, diaSemana);
+				MateriaDTO materia = new MateriaDTO(nombreMateria, profesor, horaInicio, horaFin, diaSemana);
 
 				// Actualizar la tabla directamente sin usar la ArrayList
 				Calendar calendar = Calendar.getInstance();

@@ -54,8 +54,7 @@ public class Ventana extends JFrame {
 			datos[i][0] = new SimpleDateFormat("hh:mm a").format(calendar.getTime());
 		}
 
-		datos[0][1] = "Complejidad Algoritmica";
-		datos[1][1] = "Complejidad Algoritmica";
+
 
 		modeloTabla = new DefaultTableModel(datos, diasSemana);
 		tabla = new JTable(modeloTabla);

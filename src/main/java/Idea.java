@@ -1,4 +1,4 @@
-package model;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -10,8 +10,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import model.MateriaDTO;
+
 public class Idea {
-	static ArrayList<Materia> list = new ArrayList<Materia>();
+	static ArrayList<MateriaDTO> list = new ArrayList<MateriaDTO>();
 
 	static Scanner lec = new Scanner(System.in);
 
@@ -149,12 +151,12 @@ public class Idea {
 	}
 
 	public static void quemar() {
-		list.add(new Materia("BD", "Ricardo", 7, 9, 6));
-		list.add(new Materia("BD", "Ricardo", 7, 9, 2));
-		list.add(new Materia("BD", "Jorge", 7, 9, 4));
-		list.add(new Materia("BD", "Jorge", 7, 9, 5));
-		list.add(new Materia("Ing Software", "Helio", 7, 9, 1));
-		list.add(new Materia("Ing Software", "Helio", 11, 13, 5));
+		list.add(new MateriaDTO("BD", "Ricardo", 7, 9, 6));
+		list.add(new MateriaDTO("BD", "Ricardo", 7, 9, 2));
+		list.add(new MateriaDTO("BD", "Jorge", 7, 9, 4));
+		list.add(new MateriaDTO("BD", "Jorge", 7, 9, 5));
+		list.add(new MateriaDTO("Ing Software", "Helio", 7, 9, 1));
+		list.add(new MateriaDTO("Ing Software", "Helio", 11, 13, 5));
 
 	}
 }
