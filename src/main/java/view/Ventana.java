@@ -1,9 +1,11 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -22,16 +24,22 @@ public class Ventana extends JFrame {
 	private String[][] datos;
 	private JTable tabla;
 	private DefaultTableModel modeloTabla;
-	private String[] diasSemana = { "Hora", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo" };
+	private String[] diasSemana = { "Hora", "1) Lunes", "2) Martes", "3) Miércoles", "4) Jueves", "5) Viernes", "6) Sábado", "7) Domingo" };
 
 	public Ventana() {
 		setTitle("Horario");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280, 720);
 		setLocationRelativeTo(null);
+		setIconImage(Toolkit.getDefaultToolkit().getImage("./img/logo.png"));
 		setLayout(null);
 		setResizable(false);
 
+		
+		ImageIcon icono = new ImageIcon("./img/logo.png"); 
+        setIconImage(icono.getImage());
+        
+        
 		crearMenuBar();
 
 		btnAgregar = new JButton("Agregar Materia");

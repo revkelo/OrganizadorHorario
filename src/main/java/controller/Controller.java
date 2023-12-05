@@ -32,18 +32,30 @@ public class Controller implements ActionListener {
 
 				int hinicial = vp.getMsj().tomarInt("Hora Inicial en 24 Horas") - 7;
 				int hfinal = vp.getMsj().tomarInt("Hora Final 24 Horas") - 8;
-				int diaSemana = vp.getMsj().tomarInt("Dia que ves la asignatura ejemplo 2) martes .. ");
-				String nombre = vp.getMsj().tomarString("Nombre Asignatura");
-				String profesor = vp.getMsj().tomarString("Nombre Profesor");
+				if ((hfinal == hinicial || hfinal < hinicial) && Math.abs(hfinal - hinicial) != 1) {
+					vp.getMsj().mostrarAdvertencia("Error al digitar Horas de la materia");
+				} else {
 
-				vp.getView().ponerEnHorario(hinicial, diaSemana, nombre);
-				vp.getView().ponerEnHorario(hfinal, diaSemana, nombre);
+					int diaSemana = vp.getMsj().tomarInt("Dia que ves la asignatura ejemplo 2) martes .. ");
+					if (diaSemana >= 1 && 7 <= diaSemana) {
+						String nombre = vp.getMsj().tomarString("Nombre Asignatura");
+						String profesor = vp.getMsj().tomarString("Nombre Profesor");
 
-				vp.getView().getTabla().setModel(vp.getView().getModeloTabla());
-				md.getMateria().agregar(nombre, profesor, hinicial, hfinal, diaSemana);
-				vp.getMsj().mostrar("Agregar");
+						vp.getView().ponerEnHorario(hinicial, diaSemana, nombre);
+						vp.getView().ponerEnHorario(hfinal, diaSemana, nombre);
+
+						vp.getView().getTabla().setModel(vp.getView().getModeloTabla());
+						md.getMateria().agregar(nombre, profesor, hinicial, hfinal, diaSemana);
+						vp.getMsj().mostrarExito("Agregado");
+					} else {
+						vp.getMsj().mostrarAdvertencia("Error al dia de la semana");
+
+					}
+
+				}
 			} catch (Exception e2) {
-				vp.getMsj().mostrar("Error");
+
+				vp.getMsj().mostrarError("Error");
 			}
 		}
 		if (comando.equals("Exit")) {
