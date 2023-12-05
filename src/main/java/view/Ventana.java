@@ -18,13 +18,14 @@ import javax.swing.table.DefaultTableModel;
 
 public class Ventana extends JFrame {
 
-	private JMenuItem exitMenuItem,reiniciar;
+	private JMenuItem exitMenuItem, reiniciar;
 	private JPanel horario;
 	private JButton btnAgregar;
 	private String[][] datos;
 	private JTable tabla;
 	private DefaultTableModel modeloTabla;
-	private String[] diasSemana = { "Hora", "1) Lunes", "2) Martes", "3) Miércoles", "4) Jueves", "5) Viernes", "6) Sábado", "7) Domingo" };
+	private String[] diasSemana = { "Hora", "1) Lunes", "2) Martes", "3) Miércoles", "4) Jueves", "5) Viernes",
+			"6) Sábado", "7) Domingo" };
 
 	public Ventana() {
 		setTitle("Horario");
@@ -35,15 +36,13 @@ public class Ventana extends JFrame {
 		setLayout(null);
 		setResizable(false);
 
-		
-		ImageIcon icono = new ImageIcon("./img/logo.png"); 
-        setIconImage(icono.getImage());
-        
-        
+		ImageIcon icono = new ImageIcon("./img/logo2.png");
+		setIconImage(icono.getImage());
+
 		crearMenuBar();
 
 		btnAgregar = new JButton("Agregar Materia");
-		btnAgregar.setBounds(0, 0, 150, 40);
+		btnAgregar.setBounds(100, 90, 150, 40);
 		btnAgregar.setFocusable(false);
 		btnAgregar.setActionCommand("Agregar");
 		add(btnAgregar);
@@ -61,8 +60,6 @@ public class Ventana extends JFrame {
 
 			datos[i][0] = new SimpleDateFormat("hh:mm a").format(calendar.getTime());
 		}
-
-
 
 		modeloTabla = new DefaultTableModel(datos, diasSemana);
 		tabla = new JTable(modeloTabla);
@@ -87,27 +84,26 @@ public class Ventana extends JFrame {
 		JMenu fileMenu = new JMenu("Menu");
 		exitMenuItem = new JMenuItem("Salir");
 		exitMenuItem.setActionCommand("Exit");
-		
+
 		reiniciar = new JMenuItem("Reiniciar Horario");
 		reiniciar.setActionCommand("ReiniciarHorario");
 		fileMenu.add(reiniciar);
 		fileMenu.add(exitMenuItem);
-	
 
 		menuBar.add(fileMenu);
 
 		setJMenuBar(menuBar);
 	}
-	
+
 	public void reiniciar() {
-		
+
 		for (int i = 0; i < datos.length; i++) {
 			for (int j = 1; j < datos[0].length; j++) {
-				datos[i][j]= "";
+				datos[i][j] = "";
 			}
 		}
 		modeloTabla = new DefaultTableModel(datos, diasSemana);
-		
+
 	}
 
 	public JTable getTabla() {
