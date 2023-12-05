@@ -18,9 +18,9 @@ import javax.swing.table.DefaultTableModel;
 
 public class Ventana extends JFrame {
 
-	private JMenuItem exitMenuItem, reiniciar;
+	private JMenuItem exitMenuItem, reiniciar, mostrar;
 	private JPanel horario;
-	private JButton btnAgregar;
+	private JButton btnAgregar, btnprueba;
 	private String[][] datos;
 	private JTable tabla;
 	private DefaultTableModel modeloTabla;
@@ -46,6 +46,12 @@ public class Ventana extends JFrame {
 		btnAgregar.setFocusable(false);
 		btnAgregar.setActionCommand("Agregar");
 		add(btnAgregar);
+
+		btnprueba = new JButton("Agregar mas de una");
+		btnprueba.setBounds(100, 190, 150, 40);
+		btnprueba.setFocusable(false);
+		btnprueba.setActionCommand("AgregarMas");
+		add(btnprueba);
 
 		horario = new JPanel();
 		horario.setLayout(new BorderLayout());
@@ -87,6 +93,10 @@ public class Ventana extends JFrame {
 
 		reiniciar = new JMenuItem("Reiniciar Horario");
 		reiniciar.setActionCommand("ReiniciarHorario");
+
+		mostrar = new JMenuItem("Mostrar");
+		mostrar.setActionCommand("mostrar");
+		fileMenu.add(mostrar);
 		fileMenu.add(reiniciar);
 		fileMenu.add(exitMenuItem);
 
@@ -104,6 +114,14 @@ public class Ventana extends JFrame {
 		}
 		modeloTabla = new DefaultTableModel(datos, diasSemana);
 
+	}
+
+	public JButton getBtnprueba() {
+		return btnprueba;
+	}
+
+	public void setBtnprueba(JButton btnprueba) {
+		this.btnprueba = btnprueba;
 	}
 
 	public JTable getTabla() {
@@ -168,6 +186,14 @@ public class Ventana extends JFrame {
 
 	public void setReiniciar(JMenuItem reiniciar) {
 		this.reiniciar = reiniciar;
+	}
+
+	public JMenuItem getMostrar() {
+		return mostrar;
+	}
+
+	public void setMostrar(JMenuItem mostrar) {
+		this.mostrar = mostrar;
 	}
 
 }

@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 
 import model.FachadaModel;
 import view.FachadaView;
@@ -20,13 +21,40 @@ public class Controller implements ActionListener {
 
 	public void actionsListeners() {
 		vp.getView().getBtnAgregar().addActionListener(this);
+		vp.getView().getBtnprueba().addActionListener(this);
 		vp.getView().getExitMenuItem().addActionListener(this);
 		vp.getView().getReiniciar().addActionListener(this);
+		vp.getView().getMostrar().addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
+
+		if (comando.equals("mostrar")) {
+			for (int i = 0; i < md.getMateria().getLista().size(); i++) {
+				System.out.println(md.getMateria().getLista().get(i).toString());
+			}
+		}
+
+		if (comando.equals("AgregarMas")) {
+			String nombre = vp.getMsj().tomarString("Nombre Asignatura");
+			int cuantasVeces = vp.getMsj().tomarInt("Cuantas veces a la semana se ve la materia");
+			int cuantosProfesores = vp.getMsj().tomarInt("Cuantos profesores dan esa materia/Opciones de inscribir");
+			for (int i = 0; i < cuantosProfesores; i++) {
+				String profesor = vp.getMsj().tomarString("Nombre Profesor");
+
+				for (int j = 0; j < cuantasVeces; j++) {
+					int hinicial = vp.getMsj().tomarInt("Hora Inicial en 24 Horas") - 7;
+					int hfinal = vp.getMsj().tomarInt("Hora Final 24 Horas") - 8;
+					int diaSemana = vp.getMsj().tomarInt("Dia que ves la asignatura ejemplo 2) martes .. ");
+					md.getMateria().agregar(nombre, profesor, hinicial + 7, hfinal + 7, diaSemana);
+
+				}
+			}
+
+		}
+
 		if (comando.equals("Agregar")) {
 			try {
 
@@ -48,11 +76,10 @@ public class Controller implements ActionListener {
 						vp.getView().ponerEnHorario(hfinal, diaSemana, nombre);
 
 						vp.getView().getTabla().setModel(vp.getView().getModeloTabla());
-						md.getMateria().agregar(nombre, profesor, hinicial, hfinal, diaSemana);
+						md.getMateria().agregar(nombre, profesor, hinicial + 7, hfinal + 7, diaSemana);
 						vp.getMsj().mostrarExito("Agregado");
 
 					}
-
 				}
 			} catch (Exception e2) {
 
