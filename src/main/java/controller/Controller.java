@@ -21,7 +21,7 @@ public class Controller implements ActionListener {
 	public void actionsListeners() {
 		vp.getView().getBtnAgregar().addActionListener(this);
 		vp.getView().getExitMenuItem().addActionListener(this);
-
+		vp.getView().getReiniciar().addActionListener(this);
 	}
 
 	@Override
@@ -38,6 +38,9 @@ public class Controller implements ActionListener {
 
 					int diaSemana = vp.getMsj().tomarInt("Dia que ves la asignatura ejemplo 2) martes .. ");
 					if (diaSemana >= 1 && 7 <= diaSemana) {
+						vp.getMsj().mostrarAdvertencia("Error al dia de la semana");
+
+					} else {
 						String nombre = vp.getMsj().tomarString("Nombre Asignatura");
 						String profesor = vp.getMsj().tomarString("Nombre Profesor");
 
@@ -47,8 +50,6 @@ public class Controller implements ActionListener {
 						vp.getView().getTabla().setModel(vp.getView().getModeloTabla());
 						md.getMateria().agregar(nombre, profesor, hinicial, hfinal, diaSemana);
 						vp.getMsj().mostrarExito("Agregado");
-					} else {
-						vp.getMsj().mostrarAdvertencia("Error al dia de la semana");
 
 					}
 
@@ -57,6 +58,12 @@ public class Controller implements ActionListener {
 
 				vp.getMsj().mostrarError("Error");
 			}
+		}
+
+		if (comando.equals("ReiniciarHorario")) {
+			vp.getView().getTabla().setModel(vp.getView().getModeloTabla());
+			vp.getView().reiniciar();
+
 		}
 		if (comando.equals("Exit")) {
 			vp.getMsj().mostrar("Hasta Luego...");

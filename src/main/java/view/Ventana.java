@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class Ventana extends JFrame {
 
-	private JMenuItem exitMenuItem;
+	private JMenuItem exitMenuItem,reiniciar;
 	private JPanel horario;
 	private JButton btnAgregar;
 	private String[][] datos;
@@ -85,13 +85,29 @@ public class Ventana extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 
 		JMenu fileMenu = new JMenu("Menu");
-		exitMenuItem = new JMenuItem("Exit");
+		exitMenuItem = new JMenuItem("Salir");
 		exitMenuItem.setActionCommand("Exit");
+		
+		reiniciar = new JMenuItem("Reiniciar Horario");
+		reiniciar.setActionCommand("ReiniciarHorario");
+		fileMenu.add(reiniciar);
 		fileMenu.add(exitMenuItem);
+	
 
 		menuBar.add(fileMenu);
 
 		setJMenuBar(menuBar);
+	}
+	
+	public void reiniciar() {
+		
+		for (int i = 0; i < datos.length; i++) {
+			for (int j = 1; j < datos[0].length; j++) {
+				datos[i][j]= "";
+			}
+		}
+		modeloTabla = new DefaultTableModel(datos, diasSemana);
+		
 	}
 
 	public JTable getTabla() {
@@ -148,6 +164,14 @@ public class Ventana extends JFrame {
 
 	public void setDiasSemana(String[] diasSemana) {
 		this.diasSemana = diasSemana;
+	}
+
+	public JMenuItem getReiniciar() {
+		return reiniciar;
+	}
+
+	public void setReiniciar(JMenuItem reiniciar) {
+		this.reiniciar = reiniciar;
 	}
 
 }
