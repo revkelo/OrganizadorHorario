@@ -1,16 +1,17 @@
+package model;
 
-public class Materia {
+public class MateriaDTO {
 	private String nombreMateria;
 	private String profesor;
 	private int horaInicial;
 	private int horaFinal;
 	private int dia;
 
-	public Materia() {
+	public MateriaDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Materia(String nombreMateria, String profesor, int horaInicial, int horaFinal, int dia) {
+	public MateriaDTO(String nombreMateria, String profesor, int horaInicial, int horaFinal, int dia) {
 		super();
 		this.nombreMateria = nombreMateria;
 		this.profesor = profesor;
