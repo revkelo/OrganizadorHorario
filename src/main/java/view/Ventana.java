@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class Ventana extends JFrame {
 
-	private JMenuItem exitMenuItem, reiniciar, mostrar;
+	private JMenuItem exitMenuItem, reiniciar, mostrar,horarioitem;
 	private JPanel horario;
 	private JButton btnAgregar, btnprueba;
 	private String[][] datos;
@@ -77,6 +77,16 @@ public class Ventana extends JFrame {
 
 		add(horario);
 	}
+	
+	public boolean isNull(int x, int y) {
+		if (datos[x][y] == null) {
+			return true;
+		}else {
+			return false;
+		}
+	
+		
+	}
 
 	public void ponerEnHorario(int x, int y, String materia) {
 		datos[x][y] = materia;
@@ -88,6 +98,11 @@ public class Ventana extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 
 		JMenu fileMenu = new JMenu("Menu");
+		
+		horarioitem = new JMenuItem("Horario");
+		horarioitem.setActionCommand("Horario");
+		
+		
 		exitMenuItem = new JMenuItem("Salir");
 		exitMenuItem.setActionCommand("Exit");
 
@@ -96,6 +111,7 @@ public class Ventana extends JFrame {
 
 		mostrar = new JMenuItem("Mostrar");
 		mostrar.setActionCommand("mostrar");
+		fileMenu.add(horarioitem);
 		fileMenu.add(mostrar);
 		fileMenu.add(reiniciar);
 		fileMenu.add(exitMenuItem);
@@ -115,6 +131,14 @@ public class Ventana extends JFrame {
 		modeloTabla = new DefaultTableModel(datos, diasSemana);
 		tabla.setModel(modeloTabla);
 
+	}
+
+	public JMenuItem getHorarioitem() {
+		return horarioitem;
+	}
+
+	public void setHorarioitem(JMenuItem horarioitem) {
+		this.horarioitem = horarioitem;
 	}
 
 	public JButton getBtnprueba() {

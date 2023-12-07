@@ -26,11 +26,32 @@ public class Controller implements ActionListener {
 		vp.getView().getExitMenuItem().addActionListener(this);
 		vp.getView().getReiniciar().addActionListener(this);
 		vp.getView().getMostrar().addActionListener(this);
+		vp.getView().getHorarioitem().addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
+
+		if (comando.equals("Horario")) {
+			md.getMateria().quemar();
+
+//			vp.getMsj().mostrar(vp.getView().isNull(0, 1) + "");
+			for (int i = 0; i < md.getMateria().getLista().size(); i++) {
+
+				if (vp.getView().isNull(md.getMateria().getLista().get(i).getHoraInicial() - 7, md.getMateria().getLista().get(i).getDia())) {
+				vp.getView().ponerEnHorario(md.getMateria().getLista().get(i).getHoraInicial() - 7,
+						md.getMateria().getLista().get(i).getDia(),
+						md.getMateria().getLista().get(i).getNombreMateria()+" "+md.getMateria().getLista().get(i).getGrupo());
+				vp.getView().ponerEnHorario(md.getMateria().getLista().get(i).getHoraFinal() - 8,
+						md.getMateria().getLista().get(i).getDia(),
+						md.getMateria().getLista().get(i).getNombreMateria()+" "+md.getMateria().getLista().get(i).getGrupo());
+
+				}
+			}
+			vp.getView().getTabla().setModel(vp.getView().getModeloTabla());
+			vp.getMsj().mostrarExito("Mostrado");
+		}
 
 		if (comando.equals("mostrar")) {
 			for (int i = 0; i < md.getMateria().getLista().size(); i++) {
@@ -51,10 +72,10 @@ public class Controller implements ActionListener {
 
 				if (md.getMateria().getLista().get(i).getNombreMateria().equals(materia)
 						&& md.getMateria().getLista().get(i).getOpcion() == opcion) {
-					vp.getView().ponerEnHorario(md.getMateria().getLista().get(i).getHoraInicial(),
+					vp.getView().ponerEnHorario(md.getMateria().getLista().get(i).getHoraInicial() - 7,
 							md.getMateria().getLista().get(i).getDia(),
 							md.getMateria().getLista().get(i).getNombreMateria());
-					vp.getView().ponerEnHorario(md.getMateria().getLista().get(i).getHoraFinal(),
+					vp.getView().ponerEnHorario(md.getMateria().getLista().get(i).getHoraFinal() - 7,
 							md.getMateria().getLista().get(i).getDia(),
 							md.getMateria().getLista().get(i).getNombreMateria());
 
