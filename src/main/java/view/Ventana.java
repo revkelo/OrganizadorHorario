@@ -113,6 +113,7 @@ public class Ventana extends JFrame {
 			}
 		}
 		modeloTabla = new DefaultTableModel(datos, diasSemana);
+		tabla.setModel(modeloTabla);
 
 	}
 

@@ -2,7 +2,8 @@ package model;
 
 public class MateriaDTO {
 	private String nombreMateria;
-	private String profesor;
+	private String grupo;
+	private int opcion;
 	private int horaInicial;
 	private int horaFinal;
 	private int dia;
@@ -11,14 +12,19 @@ public class MateriaDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MateriaDTO(String nombreMateria, String profesor, int horaInicial, int horaFinal, int dia) {
+
+
+	public MateriaDTO(String nombreMateria, String grupo, int opcion, int horaInicial, int horaFinal, int dia) {
 		super();
 		this.nombreMateria = nombreMateria;
-		this.profesor = profesor;
+		this.grupo = grupo;
+		this.opcion = opcion;
 		this.horaInicial = horaInicial;
 		this.horaFinal = horaFinal;
 		this.dia = dia;
 	}
+
+
 
 	public String getNombreMateria() {
 		return nombreMateria;
@@ -28,13 +34,6 @@ public class MateriaDTO {
 		this.nombreMateria = nombreMateria;
 	}
 
-	public String getProfesor() {
-		return profesor;
-	}
-
-	public void setProfesor(String profesor) {
-		this.profesor = profesor;
-	}
 
 	public int getHoraInicial() {
 		return horaInicial;
@@ -60,10 +59,37 @@ public class MateriaDTO {
 		this.dia = dia;
 	}
 
+
+
+	public String getGrupo() {
+		return grupo;
+	}
+
+
+
+	public void setGrupo(String grupo) {
+		this.grupo = grupo;
+	}
+
+
+
+	public int getOpcion() {
+		return opcion;
+	}
+
+
+
+	public void setOpcion(int opcion) {
+		this.opcion = opcion;
+	}
+
+
+
 	@Override
 	public String toString() {
-		return "Materia [nombreMateria=" + nombreMateria + ", profesor=" + profesor + ", horaInicial=" + horaInicial
-				+ ", horaFinal=" + horaFinal + ", dia=" + dia + "]";
+		return "MateriaDTO [nombreMateria=" + nombreMateria + ", grupo=" + grupo + ", opcion=" + opcion
+				+ ", horaInicial=" + horaInicial + ", horaFinal=" + horaFinal + ", dia=" + dia + "]";
 	}
+
 
 }
